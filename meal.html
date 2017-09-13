@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="main.css">
+    <!-- <link media="screen" href="http://openfontlibrary.org/face/segoe-ui-symbol" rel="stylesheet" type="text/css"/> -->
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/earlyaccess/notosanstc.css">
+    <script src="http://code.jquery.com/jquery-1.12.0.min.js"></script>
+    <script type="text/javascript" src="meal.js"></script>
+</head>
+<body>
+	<form class="form-inline" onsubmit="return returnFalse();">
+	  <label class="mr-sm-2" for="inlineFormCustomSelect0">主餐</label>
+	  <select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="inlineFormCustomSelect0">
+	  </select>
+	  <label class="mr-sm-2" for="inlineFormCustomSelect1">附餐</label>
+	  <select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="inlineFormCustomSelect1">
+	  </select>
+	  <label class="mr-sm-2" for="inlineFormCustomSelect2">配餐</label>
+	  <select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="inlineFormCustomSelect2">
+	  </select>
+
+	  <label class="custom-control custom-checkbox mb-2 mr-sm-2 mb-sm-0 checkLabel">
+	    <input type="checkbox" class="custom-control-input goCheck">
+	    <span class="custom-control-indicator"></span>
+	    <span class="custom-control-description">Check</span>
+	  </label>
+
+	  <button type="submit" class="btn btn-primary submitBtn" disabled="disabled">Submit</button>
+	</form>
+	<div class="login">
+		<form>
+			<label class="mr-sm-2" for="id">ID
+			<input type="text" name="id"></label>
+			<label class="mr-sm-2" for="id">Password
+			<input type="password" name="pw"></label>
+		</form>
+		<div class="showMeal"></div>
+	</div>
+<!-- 	<div class="px767">767px</div>
+	<div class="px480">480px</div>
+	<div class="px768_979">768px~979px</div>
+	<div class="px980">980px</div>
+	<div class="px1200">1200px</div> -->
+	<script type="text/javascript">
+		$('.form-inline').MealOrder({
+			Meal: 1, //0=早班 , 1=午餐
+			FinishTime: '11:00',
+			st:[
+				{k:0 , name:"&#x1F414;香酥雞腿",price:45},
+				{k:1 , name:"&#x1F437;酥炸排骨",price:40},
+				{k:2 , name:"&#x1F41F;清蒸鮮魚",price:50},
+				{k:3 , name:"&#x1F3A3;巴沙魚",price:50}
+				],
+			nd:[
+				{k:0 ,name: "&#x1F344;香菇", price: 20},
+				{k:1 ,name: "&#x1F33D;空心菜",price: 20},
+				{k:2 ,name: "&#x1F33E;青江菜",price: 20},
+				{k:3 ,name: "&#x1F33F;大白菜",price: 25},
+				{k:4 ,name: "&#x1F346;茄子", price: 25}
+				],
+			rd:[
+				{k:0 ,name: "&#x1F372;蘑菇濃湯",price: 25},
+				{k:1 ,name: "&#x1F372;青菜蛋花湯",price: 20},
+				{k:2 ,name: "&#x1F379;冬瓜茶",price: 15},
+				{k:3 ,name: "&#x1F373;水蜜桃茶飲",price: 30},
+				]
+		})
+
+		function returnFalse(){
+			return false;
+		}
+	</script>
+</body>
+	
+</html>
