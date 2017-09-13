@@ -3,7 +3,7 @@
 
 	var ModuleName='MealOrder';
 
-	var Module = function(element,opts){
+	var Module = function( element , opts ){
 		this.ele = element;
 		this.$ele = $(element);
 		this.opts = opts;
@@ -34,6 +34,7 @@
         this.$submit.on('click',function(){
         	self.Submit();
         })
+
         this.$loginInput.on('keyup',function(){
         	self.verification();
         })
@@ -42,16 +43,16 @@
         })
 	}
 //接收對象、並且組成html
-	Module.prototype.MakeString = function(obj,option,n){
+	Module.prototype.MakeString = function( obj , option , n ){
 		var option = '';
 		var nb = '&nbsp&nbsp&nbsp&nbsp';
         obj.map
     		(
-                (item) => {
-                    option += '<option value="'+item.k+'">'+item.name+nb+item.price+'$</option>';
+                ( item ) => {
+                    option += '<option value="' + item.k + '">'+ item.name + nb + item.price + '$</option>';
             	}
             );
-        $('#inlineFormCustomSelect'+n).html(option);
+        $('#inlineFormCustomSelect' + n ).html(option);
 	}
 //設定select>option
 	Module.prototype.SetSelectList = function(){
@@ -61,14 +62,14 @@
 	}
 //取得selected裡面的值 塞進陣列裡面
 	Module.prototype.GetSeletcedValue = function(){
-		var selectarr = [];
+		var selectArr = [];
 		this.$ele.find('select').each(function(){
-			selectarr.push(this.value);
+			selectArr.push(this.value);
 		})
-		this.selectArray = selectarr;
+		this.selectArray = selectArr;
 	}
 	Module.prototype.Check = function(){
-		if(this.checkStatus===0){
+		if( this.checkStatus === 0 ){
 			this.checkStatus=1;
 			this.$select.prop('disabled',"true");
 			this.$submit.removeAttr('disabled');
@@ -81,33 +82,41 @@
 	}
 //送出鈕取出陣列的資料
 	Module.prototype.Submit = function(){
+		var self = this;
 		var st = this.opts.st;
 		var nd = this.opts.nd;
 		var rd = this.opts.rd;
 		var YourOrder ='<p>Your order :</p>';
-		var FirstMeal = '<p>'+st[this.selectArray[0]].name+'</p>';
-		var SecendMeal ='<p>'+nd[this.selectArray[1]].name+'</p>';
-		var TherdMeal = '<p>'+rd[this.selectArray[2]].name+'</p>';
-		var ListEnd = '<button type="submit" class="btn btn-primary submitBtnOrder" disabled="disabled">請先登入</button>'
-		var OrderList = YourOrder+FirstMeal+SecendMeal+TherdMeal+ListEnd;
-		if(this.checkStatus===1){
-			$('.login').show();
-			$('.showMeal').append(OrderList);
-		}
+		var FirstMeal = '<p>'+ st[ this.selectArray[0] ].name +'</p>';
+		var SecendMeal ='<p>'+ nd[ this.selectArray[1] ].name +'</p>';
+		var TherdMeal = '<p>'+ rd[ this.selectArray[2] ].name +'</p>';
+		var submitBtnOrder = '<button type="submit" class="btn btn-primary submitBtnOrder" disabled="disabled">請先登入</button>';
+		var OrderList = YourOrder + FirstMeal + SecendMeal + TherdMeal + submitBtnOrder;
 		this.$submit.prop('disabled',"true");
 		this.$checkBox.prop('disabled',"true");
 		this.$ele.append('<div class="login"><form><label class="mr-sm-2" for="id">ID</label><input type="text" name="id"><label class="mr-sm-2" for="id">Password</label><input type="password" name="pw"></form><div class="showMeal"></div></div>')
+		if( this.checkStatus === 1 ){
+			$('.login').show();
+			$('.showMeal').append(OrderList);
+		}
+		$('.submitBtnOrder').on('click',function(){
+        	self.SendOrder();
+        })
 	}
 //驗證登入的帳號密碼
 	Module.prototype.verification = function(){
 		var emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 		var $loginInput = this.$loginInput;
-		var $loginInput2 =this.$loginInput2;
+		var $loginInput2 = this.$loginInput2;
 		if($loginInput.val().length >= 8 && $loginInput2.val().length >=4){
 			$('.submitBtnOrder').removeAttr('disabled').text('送出');
 		}else{
 			$('.submitBtnOrder').prop('disabled',"true").text('請先登入');
 		}
+	}
+	Module.prototype.SendOrder = function(){
+		alert('感謝您的訂購！');
+		$('.submitBtnOrder').prop('disabled',"true");
 	}
 
 	$.fn[ModuleName] = function( methods, opts ){
