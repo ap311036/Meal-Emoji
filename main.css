@@ -4,9 +4,9 @@ label{
 	justify-content:center;
 }
 .form-inline{
-	width: 230px;
-	height: 600px;
-    margin: 0 auto;
+	width: 600px;
+	height: 500px;
+    	margin: 0 auto;
 	padding-top: 50px;
 }
 select{
