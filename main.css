@@ -1,0 +1,92 @@
+@import url(mlayout.css) screen and (min-width: 641px);
+@import url(llayout.css) screen and (max-width: 640px);
+label{
+	justify-content:center;
+}
+.form-inline{
+	width: 230px;
+	height: 600px;
+    margin: 0 auto;
+	padding-top: 50px;
+}
+select{
+	width: 100%;
+
+}
+.login{
+	width: 335px;
+	height: 335px;
+	padding: 20px;
+	box-shadow: 10px 10px 5px #888888;
+	background: #fff;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: auto;
+	z-index: 1;
+	display: none;
+}
+.checkLabel{
+    display: inherit;
+    position: relative;
+    right: 0;
+    left: 0;
+    margin: 0 auto;
+}
+.btn{
+    display: inherit;
+    position: relative;
+    right: 0;
+    left: 0;
+    margin: 0 auto;
+}
+.submitBtnOrder{
+    margin-top: 26px;
+}
+.login input{
+	float: right;
+}
+.showMeal{
+	padding-top: 15px;
+	font-family: 'Noto Sans TC', sans-serif;
+}
+.showMeal p:nth-child(n+2){
+	text-align: center;
+}
+@media (max-width: 767px) {
+	/* .px767{display: none;} */
+	.px480{display: none;}
+	.px768_979{display: none;}
+	.px980{display: none;}	
+	.px1200{display: none;}
+}
+@media (max-width: 480px) {
+	.px767{display: none;}
+	.px480{display: inline;}
+	.px768_979{display: none;}
+	.px980{display: none;}
+	.px1200{display: none;}
+}
+@media (min-width: 768px) and (max-width: 979px) {
+	.px767{display: none;}
+	.px480{display: none;}
+	/* .px768_979{display: none;} */
+	.px980{display: none;}	
+	.px1200{display: none;}
+}
+@media (min-width: 980px) {
+	.px767{display: none;}
+	.px480{display: none;}
+	.px768_979{display: none;}
+	/* .px980{display: none;}*/
+	.px1200{display: none;N}
+}
+@media (min-width: 1200px) {
+	.px767{display: none;}
+	.px480{display: none;}
+	.px768_979{display: none;}
+	.px980{display: none;}	
+	.px1200{display: inline;}
+}
